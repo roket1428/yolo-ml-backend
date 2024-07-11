@@ -1,0 +1,6 @@
+path: ./dataroot
+train: images/train
+val: images/val
+names:
+  0: minus
+  1: plus
