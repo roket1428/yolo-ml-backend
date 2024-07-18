@@ -7,9 +7,9 @@ from label_studio_ml.utils import get_image_size, is_skipped
 
 from ultralytics.models import YOLO
 
-TRAINED_MODEL_ = os.path.join(os.getenv("CHECKPOINT_DIR", "./yolobk/data/checkpoints"), "yolov10n_trained_.pt")
-TRAINED_MODEL = os.path.join(os.getenv("CHECKPOINT_DIR", "./yolobk/data/checkpoints"), "yolov10n_trained.pt")
-INITIAL_MODEL = os.path.join(os.getenv("CHECKPOINT_DIR", "./yolobk/data/checkpoints"), "yolov10n.pt")
+TRAINED_MODEL_ = os.path.join(os.getenv("CHECKPOINT_DIR", "./yolobk/data/checkpoints"), "yolov8n_trained_.pt")
+TRAINED_MODEL = os.path.join(os.getenv("CHECKPOINT_DIR", "./yolobk/data/checkpoints"), "yolov8n_trained.pt")
+INITIAL_MODEL = os.path.join(os.getenv("CHECKPOINT_DIR", "./yolobk/data/checkpoints"), "yolov8n.pt")
 BEST_MODEL = "./yolobk/runs/detect/train/weights/best.pt"
 
 DATASET_DIR = os.getenv("DATASET_DIR", "./yolobk/dataset")
@@ -188,9 +188,9 @@ class YOLOv10(LabelStudioMLBase):
 
             if self.waiting_annotations == 80:
                 # check for human errors before training
-                self.fix_human_errors_on_labelling()
+                # self.fix_human_errors_on_labelling()
                 if os.path.isfile(BEST_MODEL):
-                    shutil.copyfile(BEST_MODEL, TRAINED_MODEL_)
+                    shutil.copyfile(BEST_MODEL, TRAINED_MODEL)
                     shutil.copytree("./yolobk/runs/detect/train", "./yolobk/archive/runs/" + str(int(time.time())))
                     shutil.rmtree("./yolobk/runs/detect")
                 print("starting the training")

@@ -1,1 +1,6 @@
-{"waiting_annotations": 0, "current_target": "train", "for_training": 30, "for_validation": 10}
+{
+  "waiting_annotations": 0,
+  "current_target": "train",
+  "for_training": 60,
+  "for_validation": 20
+}
